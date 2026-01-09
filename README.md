@@ -261,3 +261,5 @@ MIT License — see [LICENSE](LICENSE) for details.
 <p align="center">
   <em>Built with 💙 for students who deserve better.</em>
 </p>
+#   M v g r _ N e x U s  
+ 
