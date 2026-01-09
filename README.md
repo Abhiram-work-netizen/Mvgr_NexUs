@@ -195,9 +195,6 @@ dartclass FirebaseConfig {
   // Add other Firebase config values
 }
 ```
-
----
-
 ## 📁 Project Structure
 ```
 mvgr_nexus/
