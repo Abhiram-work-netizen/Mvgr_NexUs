@@ -42,78 +42,115 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
         child: SafeArea(
           child: Column(
             children: [
-              const SizedBox(height: 48),
+              const SizedBox(height: 32),
               // Logo & Title
-              // Logo & Title
-              Image.asset(
-                'assets/images/logo.png',
-                height: 120,
-                width: 120,
-              ),
-              const SizedBox(height: 16),
-              Text(
-                'MVGR NEXUS',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 32,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 2,
+              _FadeSlide(
+                delay: const Duration(milliseconds: 0),
+                child: Image.asset(
+                  'assets/images/logo.png',
+                  height: 120,
+                  width: 120,
+                  filterQuality: FilterQuality.high,
                 ),
               ),
-              Text(
-                'Your Campus Community',
-                style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.8),
-                  fontSize: 16,
+              const SizedBox(height: 16),
+              _FadeSlide(
+                delay: const Duration(milliseconds: 100),
+                child: const Text(
+                  'MVGR NEXUS',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 32,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 2,
+                    shadows: [
+                      Shadow(
+                        color: Colors.black26,
+                        offset: Offset(0, 2),
+                        blurRadius: 4,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              _FadeSlide(
+                delay: const Duration(milliseconds: 200),
+                child: Text(
+                  'Your Campus Community',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.9),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: 0.5,
+                  ),
                 ),
               ),
               const SizedBox(height: 48),
 
               // Auth Card
               Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: theme.scaffoldBackgroundColor,
-                    borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
-                  ),
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 24),
-                      // Tab Bar
-                      Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 24),
-                        decoration: BoxDecoration(
-                          color: theme.colorScheme.surfaceContainerHighest,
-                          borderRadius: BorderRadius.circular(12),
+                child: _FadeSlide(
+                  delay: const Duration(milliseconds: 400),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: theme.scaffoldBackgroundColor,
+                      borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          blurRadius: 20,
+                          offset: const Offset(0, -5),
                         ),
-                        child: TabBar(
-                          controller: _tabController,
-                          indicator: BoxDecoration(
-                            color: AppColors.primary,
-                            borderRadius: BorderRadius.circular(10),
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 24),
+                        // Tab Bar
+                        Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 24),
+                          padding: const EdgeInsets.all(4),
+                          decoration: BoxDecoration(
+                            color: theme.colorScheme.surfaceContainerHighest.withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(16),
                           ),
-                          indicatorPadding: const EdgeInsets.all(4),
-                          labelColor: Colors.white,
-                          unselectedLabelColor: theme.colorScheme.onSurfaceVariant,
-                          dividerHeight: 0,
-                          tabs: const [
-                            Tab(text: 'Login'),
-                            Tab(text: 'Sign Up'),
-                          ],
+                          child: TabBar(
+                            controller: _tabController,
+                            indicator: BoxDecoration(
+                              color: AppColors.primary,
+                              borderRadius: BorderRadius.circular(12),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: AppColors.primary.withOpacity(0.3),
+                                  blurRadius: 8,
+                                  offset: const Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                            indicatorSize: TabBarIndicatorSize.tab,
+                            labelColor: Colors.white,
+                            unselectedLabelColor: theme.colorScheme.onSurfaceVariant,
+                            dividerHeight: 0,
+                            labelStyle: const TextStyle(fontWeight: FontWeight.w700),
+                            tabs: const [
+                              Tab(text: 'Login'),
+                              Tab(text: 'Sign Up'),
+                            ],
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 24),
-                      // Tab Views
-                      Expanded(
-                        child: TabBarView(
-                          controller: _tabController,
-                          children: const [
-                            _LoginForm(),
-                            _SignupForm(),
-                          ],
+                        const SizedBox(height: 24),
+                        // Tab Views
+                        Expanded(
+                          child: TabBarView(
+                            controller: _tabController,
+                            children: const [
+                              _LoginForm(),
+                              _SignupForm(),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -662,6 +699,57 @@ class _DemoButton extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+class _FadeSlide extends StatefulWidget {
+  final Widget child;
+  final Duration delay;
+
+  const _FadeSlide({required this.child, required this.delay});
+
+  @override
+  State<_FadeSlide> createState() => _FadeSlideState();
+}
+
+class _FadeSlideState extends State<_FadeSlide> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _fadeAnimation;
+  late Animation<Offset> _slideAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    );
+
+    _fadeAnimation = CurvedAnimation(parent: _controller, curve: Curves.easeOut);
+    _slideAnimation = Tween<Offset>(
+      begin: const Offset(0, 0.2),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic));
+
+    Future.delayed(widget.delay, () {
+      if (mounted) _controller.forward();
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FadeTransition(
+      opacity: _fadeAnimation,
+      child: SlideTransition(
+        position: _slideAnimation,
+        child: widget.child,
       ),
     );
   }

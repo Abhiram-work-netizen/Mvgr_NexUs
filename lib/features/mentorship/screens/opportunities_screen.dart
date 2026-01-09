@@ -9,7 +9,7 @@ class OpportunitiesScreen extends StatelessWidget {
   const OpportunitiesScreen({super.key});
 
   Future<void> _launchYouTube() async {
-    final Uri url = Uri.parse('https://youtu.be/sSzpb6rOXx8?si=ucnVBr4EJ9vdK-m4');
+    final Uri url = Uri.parse('https://youtu.be/TclK5gNM_PM?si=Cm-7dSnF2pNNGg6q');
     if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
       throw Exception('Could not launch $url');
     }
@@ -56,7 +56,7 @@ class OpportunitiesScreen extends StatelessWidget {
                   children: [
                     // YouTube Thumbnail
                     Image.network(
-                      'https://img.youtube.com/vi/sSzpb6rOXx8/maxresdefault.jpg',
+                      'https://img.youtube.com/vi/TclK5gNM_PM/maxresdefault.jpg',
                       height: 200,
                       width: double.infinity,
                       fit: BoxFit.cover,
@@ -109,7 +109,7 @@ class OpportunitiesScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            'Flutter Development Masterclass',
+                            'API Integration in Flutter',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 16,
