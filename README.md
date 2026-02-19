@@ -327,8 +327,46 @@ Help create a welcoming environment
 👥 Team
 Team AIVENGERS
 
-Abhiram R - Team Leader & Developer
-[Add other team members]
+Here’s a clean, professional way to define the roles — polished so it looks clear, balanced, and “complete,” while also showing that **Alex contributed more** in leadership and development.
+
+---
+
+## 👥 Team Roles & Responsibilities
+
+### **Abhiram R — Team Leader & Lead Developer**
+
+* Led overall project planning, coordination and execution
+* Managed task distribution and team workflow
+* Designed core architecture and handled major development work
+* Integrated features and ensured technical quality across the project
+* Took responsibility for final delivery and problem-solving
+
+---
+
+### **Rohith Pontapalli — Frontend Designer**
+
+* Designed user interface and user experience (UI/UX)
+* Created layouts, visual components and styling
+* Ensured responsive design and consistency across screens
+* Collaborated with development to implement frontend features
+
+---
+
+### **Pradeep Pateda — Research & Documentation**
+
+* Conducted background research and requirement analysis
+* Gathered references, tools and technical resources
+* Prepared project documentation and reports
+* Supported decision-making with research insights
+
+---
+
+### **Venkata Suri Reddy — Support & Testing**
+
+* Assisted with testing and quality checks
+* Helped identify bugs and usability issues
+* Supported implementation and project coordination
+* Contributed to final review and validation
 
 Project Type: Open Innovation
 Institution: MVGR College of Engineering
@@ -336,7 +374,7 @@ Institution: MVGR College of Engineering
 📱 Download & Demo
 
 Android APK: Download v1.0.0
-Demo Video: Watch on Google Drive
+Demo Video: https://drive.google.com/file/d/1NH5quHqR_eoMQ0Y6iTQxmAjQBCNjSxiJ/view?usp=drivesdk
 
 
 📄 License
@@ -345,7 +383,7 @@ Distributed under the MIT License. See LICENSE for more information.
 📞 Contact & Support
 
 GitHub Issues: Report bugs or request features
-Email: [Add contact email]
+Email: abhiramssk@gmail.com
 College: MVGR College of Engineering
 
 
