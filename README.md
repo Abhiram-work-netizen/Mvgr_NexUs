@@ -152,7 +152,7 @@ Installation
 
 Clone the repository
 
-bashgit clone https://github.com/Abhiram-worknetizen/Mvgr_NexUs.git
+bashgit clone https://github.com/Abhiram-work-netizen/Mvgr_NexUs
 cd Mvgr_NexUs
 
 Install dependencies
